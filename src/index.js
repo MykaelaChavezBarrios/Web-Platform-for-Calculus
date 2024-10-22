@@ -22,6 +22,7 @@ set_middlewares(app)
 // Routes
 
 app.get('/', routes);
+app.use('/', routes);
 
 // Public files
 

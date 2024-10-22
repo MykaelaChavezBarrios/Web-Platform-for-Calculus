@@ -1,0 +1,44 @@
+:root  {
+    --green: #00bc70;
+    --black:#000000;
+    --gray: #C0C0C0;
+    --light-gray: #f0f0f0;
+    --dark-gray: #737373;
+    --title-font: 'Source Sans Pro', sans-serif;
+    --body-font: 'Montserrat', sans-serif;
+    --shadow: 4px 4px 4px 0px var(--light-gray);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: var(--title-font);
+    font-size: 48px;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: var(--title-font);
+    font-size: 32px;
+    font-weight: 600;
+}
+
+h3 {
+    font-family: var(--title-font);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+h4 {
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 700;
+}
