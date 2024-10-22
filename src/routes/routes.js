@@ -1,17 +1,41 @@
 import { Router } from 'express';
-
+import { loginAuth } from '../controllers/authC.js';
 const router = Router();
 
-//ruta de inicio de sesión
-router.get('/', (req, res) => (
-    res.render('login', { layout: 'auth', title: 'Inicio de sesión' })
-));
+// Ruta para mostrar el formulario de inicio de sesión
+router.get('/', (req, res) => {
+    res.render('login', { layout: 'auth', title: 'Inicio de sesión' });
+});
 
-//ruta de inicio
+// Ruta para procesar el inicio de sesión
+router.post('/loginAuth', loginAuth);
+/*
+// Ruta de inicio (home)
 router.get('/inicio', (req, res) => {
-    res.render('home', { layout: 'main', title: 'Inicio' });
+    res.render('home-E', { layout: 'main-E', title: 'Inicio' });
+});
+
+router.get('/inicio-docente', (req, res) => {
+    res.render('home-P', { layout: 'main-P', title: 'Inicio' });
+});
+*/
+
+// Rutas para los dashboards
+router.get('/inicio-docente', (req, res) => {
+    if (req.session.user && req.session.user.rol === 'docente') {
+        res.render('home-P', { layout: 'main-P', title: 'Inicio' });
+    } else {
+        res.redirect('/'); // Redirige al login si no es docente
+    }
+});
+
+router.get('/inicio', (req, res) => {
+    if (req.session.user && req.session.user.rol === 'estudiante') {
+        res.render('home-E', { layout: 'main-E', title: 'Inicio' });
+    } else {
+        res.redirect('/'); // Redirige al login si no es estudiante
+    }
 });
 
 
 export default router;
-

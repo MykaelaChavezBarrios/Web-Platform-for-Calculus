@@ -14,4 +14,24 @@
 <body>
     {{{body}}}
 </body>
+
+<script>
+    const studentButton = document.getElementById('student-button');
+    const teacherButton = document.getElementById('teacher-button');
+    const roleInput = document.getElementById('role');
+
+    // Cambiar el valor del campo oculto según el botón que el usuario seleccione
+    studentButton.addEventListener('click', () => {
+        roleInput.value = 'estudiante';
+        studentButton.classList.add('active');
+        teacherButton.classList.remove('active');
+    });
+
+    teacherButton.addEventListener('click', () => {
+        roleInput.value = 'docente';
+        teacherButton.classList.add('active');
+        studentButton.classList.remove('active');
+    });
+</script>
+
 </html>
