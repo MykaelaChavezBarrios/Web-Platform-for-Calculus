@@ -9,16 +9,6 @@ router.get('/', (req, res) => {
 
 // Ruta para procesar el inicio de sesión
 router.post('/loginAuth', loginAuth);
-/*
-// Ruta de inicio (home)
-router.get('/inicio', (req, res) => {
-    res.render('home-E', { layout: 'main-E', title: 'Inicio' });
-});
-
-router.get('/inicio-docente', (req, res) => {
-    res.render('home-P', { layout: 'main-P', title: 'Inicio' });
-});
-*/
 
 // Rutas para los dashboards
 router.get('/inicio-docente', (req, res) => {
