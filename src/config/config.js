@@ -13,7 +13,7 @@ const config = (app) => {
 
     // Configuración del motor de plantillas Handlebars
     app.engine('.hbs', engine({
-        defaultLayout: 'main',
+        defaultLayout: 'main-E',
         layoutsDir: join(app.get('views'), 'layouts'),
         partialsDir: join(app.get('views'), 'partials'),
         extname: '.hbs'

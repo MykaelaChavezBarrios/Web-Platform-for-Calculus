@@ -4,6 +4,9 @@
     --gray: #C0C0C0;
     --light-gray: #f0f0f0;
     --dark-gray: #737373;
+    --warning: #f8abab;
+    --attention: #feedaa;
+    --positive: #8ce9c3;
     --title-font: 'Source Sans Pro', sans-serif;
     --body-font: 'Montserrat', sans-serif;
     --shadow: 4px 4px 4px 0px var(--light-gray);
