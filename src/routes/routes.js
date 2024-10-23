@@ -27,5 +27,12 @@ router.get('/inicio', (req, res) => {
     }
 });
 
+router.get('/mi-perfil', (req, res) => {
+    res.render('profile', { layout: 'main-E', title: 'Mi perfil' });
+});
+
+router.get('/mi-perfil-docente', (req, res) => {
+    res.render('profile', { layout: 'main-P', title: 'Mi perfil' });
+});
 
 export default router;

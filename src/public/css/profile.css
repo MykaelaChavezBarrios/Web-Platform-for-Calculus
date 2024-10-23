@@ -1,0 +1,29 @@
+.icon-user{
+    background-color: var(--green);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.icon-user p {
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--light-gray);
+}
+
+.info-user {
+    margin: 40px 0px;
+}
+
+.info-data {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    width: 440px;
+    height: 40px;
+    border: solid 2px var(--light-gray);
+}
