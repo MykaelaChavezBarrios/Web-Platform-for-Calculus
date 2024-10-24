@@ -17,6 +17,10 @@
 
 .info-user {
     margin: 40px 0px;
+    display: grid;
+    grid-template-columns: 440px 440px;
+    column-gap: 40px;
+    row-gap: 8px;
 }
 
 .info-data {
@@ -26,4 +30,42 @@
     width: 440px;
     height: 40px;
     border: solid 2px var(--light-gray);
+    margin: 12px 0px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 40px;
+}
+
+.change-password {
+    background-color: #fff;
+    color: var(--green);
+    border: solid 2px var(--green);
+    border-radius: 4px;
+    width: 220px;
+    height: 40px;
+    font-weight: 600;
+}
+
+.change-password:hover{
+    border-color: var(--dark-gray);
+    color: var(--dark-gray);
+    cursor: pointer;
+}
+
+.log-out{
+    background-color: var(--green);
+    color: #fff;
+    border: solid 2px var(--green);
+    border-radius: 4px;
+    width: 220px;
+    height: 40px;
+    font-weight: 600;
+}
+
+.log-out:hover{
+    background-color: var(--dark-gray);
+    border-color: var(--dark-gray);
+    cursor: pointer;
 }
