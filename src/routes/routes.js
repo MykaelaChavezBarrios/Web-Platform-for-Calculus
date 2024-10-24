@@ -27,12 +27,24 @@ router.get('/inicio', (req, res) => {
     }
 });
 
+// Rutas de acceso a Mi Perfil
+
 router.get('/mi-perfil', (req, res) => {
     res.render('profile', { layout: 'main-E', title: 'Mi perfil' });
 });
 
 router.get('/mi-perfil-docente', (req, res) => {
     res.render('profile', { layout: 'main-P', title: 'Mi perfil' });
+});
+
+// Rutas de acceso a Cambiar constraseña
+
+router.get('/mi-perfil/cambiar-contrasena', (req, res) => {
+    res.render('password', { layout: 'main-E', title: 'Cambiar Contraseña' });
+});
+
+router.get('/mi-perfil-docente/cambiar-contrasena-docente', (req, res) => {
+    res.render('password', { layout: 'main-P', title: 'Cambiar Contraseña' });
 });
 
 export default router;
