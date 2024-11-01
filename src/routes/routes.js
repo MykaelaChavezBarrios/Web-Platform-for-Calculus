@@ -48,3 +48,9 @@ router.get('/mi-perfil-docente/cambiar-contrasena-docente', (req, res) => {
 });
 
 export default router;
+
+// Ruta de contenido
+
+router.get('/contenido', (req, res) => {
+    res.render('content', { layout: 'main-E', title: 'Contenido' });
+});
