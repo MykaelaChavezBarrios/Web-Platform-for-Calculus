@@ -31,6 +31,9 @@
     height: 40px;
     border: solid 2px var(--light-gray);
     margin: 12px 0px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
 }
 
 .btn-container {
