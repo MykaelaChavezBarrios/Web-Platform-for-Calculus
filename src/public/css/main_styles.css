@@ -6,7 +6,7 @@
     --dark-gray: #737373;
     --warning: #f8abab;
     --attention: #feedaa;
-    --positive: #8ce9c3;
+    --positive: #98F6BE;
     --title-font: 'Source Sans Pro', sans-serif;
     --body-font: 'Montserrat', sans-serif;
     --shadow: 4px 4px 4px 0px var(--light-gray);
@@ -16,10 +16,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--body-font);
+    /*font-family: var(--body-font);*/
     font-size: 14px;
     font-weight: 400;
-    overflow-x: hidden;
 }
 
 h1 {
@@ -44,4 +43,8 @@ h4 {
     font-family: var(--body-font);
     font-size: 14px;
     font-weight: 700;
+}
+
+p, a, button, h5, h6, label, input{
+    font-family: var(--body-font);
 }

@@ -123,3 +123,25 @@ CREATE TABLE IF NOT EXISTS ERROR_PASO (
 );
 
 
+-- Tabla VIDEO
+-- Almacena los videos relacionados con cada tema
+CREATE TABLE IF NOT EXISTS VIDEO (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,  -- URL del video
+    titulo VARCHAR(100),        -- Título descriptivo del video
+    id_tema INT,                -- Relación con el tema
+    FOREIGN KEY (id_tema) REFERENCES TEMA(id)
+);
+
+-- Tabla VIDEO
+-- Almacena los videos relacionados con cada tema
+CREATE TABLE IF NOT EXISTS VIDEO (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,  -- URL del video
+    titulo VARCHAR(100),        -- Título descriptivo del video
+    id_tema INT,                -- Relación con el tema
+    FOREIGN KEY (id_tema) REFERENCES TEMA(id)
+);
+
+
+
