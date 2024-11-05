@@ -141,16 +141,5 @@ main {
     background-color: var(--green);
 }
 
-.error-container {
-    background-color: var(--warning);
-    text-align: center;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
 
-.error-message {
-    font-weight: 600;
-    color: #973C3C;
-}
 
