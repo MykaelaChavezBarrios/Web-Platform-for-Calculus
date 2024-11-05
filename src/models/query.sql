@@ -133,14 +133,24 @@ CREATE TABLE IF NOT EXISTS VIDEO (
     FOREIGN KEY (id_tema) REFERENCES TEMA(id)
 );
 
--- Tabla VIDEO
--- Almacena los videos relacionados con cada tema
-CREATE TABLE IF NOT EXISTS VIDEO (
+-- Tabla VIDEO_PASO
+-- Almacena los videos de retroalimentación específicos para cada paso de un ejercicio paso a paso
+CREATE TABLE IF NOT EXISTS VIDEO_PASO (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255) NOT NULL,  -- URL del video
-    titulo VARCHAR(100),        -- Título descriptivo del video
-    id_tema INT,                -- Relación con el tema
-    FOREIGN KEY (id_tema) REFERENCES TEMA(id)
+    url VARCHAR(255) NOT NULL,      -- URL del video de retroalimentación
+    titulo VARCHAR(100),            -- Título del video
+    id_paso INT,                    -- Relación con el paso al que pertenece el video
+    FOREIGN KEY (id_paso) REFERENCES PASO(id)
+);
+
+-- Tabla VIDEO_DESAFIO
+-- Almacena los videos de retroalimentación específicos para cada desafío
+CREATE TABLE IF NOT EXISTS VIDEO_DESAFIO (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,      -- URL del video de retroalimentación para el desafío
+    titulo VARCHAR(100),            -- Título del video
+    id_ejercicio INT,               -- Relación con el ejercicio de tipo desafío
+    FOREIGN KEY (id_ejercicio) REFERENCES EJERCICIO(id)
 );
 
 
