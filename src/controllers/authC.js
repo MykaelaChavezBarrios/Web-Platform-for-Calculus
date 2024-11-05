@@ -25,7 +25,7 @@ export const loginAuth = async (req, res) => {
                 if (user.rol === 'estudiante') {
                     res.redirect('/inicio');
                 } else if (user.rol === 'docente') {
-                    res.redirect('/inicio-docente');
+                    res.redirect('/inicio');
                 }
             } else {
                 // Contraseña incorrecta, recargar la página de login con un mensaje de error
@@ -52,4 +52,17 @@ export const loginAuth = async (req, res) => {
             error: 'Ocurrió un error, intenta nuevamente.'
         });
     }
+};
+
+// Función para cerrar sesión
+export const logout = (req, res) => {
+    // Destruir la sesión del usuario
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Error al cerrar sesión:", err);
+            return res.redirect('/'); // Puedes redirigir a una página de error si deseas
+        }
+        // Redirigir al usuario a la página de inicio de sesión después de cerrar sesión
+        res.redirect('/');
+    });
 };
