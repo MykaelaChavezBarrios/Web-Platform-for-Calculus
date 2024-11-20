@@ -1,73 +1,71 @@
 <main class="content">
-    <h1>Ejercicio 1.1</h1>
+    <h1>{{title}}</h1>
     <div class="content-resource">
-        <div class="rs-container">    
+        <div class="rs-container">
+            <!-- Descripción del ejercicio -->
             <div class="statement">
-                <p>
-                    Encuentre dónde \( f \) tiene máximo y mínimo absolutos. Halle los valores máximo y mínimo absolutos de \( f \).\[
-        f(x) = \left( x^2 - 1 \right)^3, \quad x \in [-1, 2].
-        \]
-                </p>
+                <p>{{descripcion}}</p>
             </div>
+
+            <!-- Paso actual -->
             <div class="step">
                 <div class="step-statement">
-                    <p>¿Cuál es la derivada de \( f(x) \)?s</p>
+                    <p>{{paso.descripcion}}</p>
                 </div>
-                <div class="step-options">
-                    <form action="">
-                        <div class="option">
-                            <input type="radio" name="answer" id="a" value="a">
-                            <label for="a">\( f'(x) = 3 (2x)^2 \)</label>
-                        </div>
-                        
-                        <div class="option">
-                            <input type="radio" name="answer" id="b" value="b">
-                            <label for="b">\( f'(x) = 3 \left( x^2 - 1 \right)^2 \)</label>
-                        </div>
-                        
-                        <div class="option">
-                            <input type="radio" name="answer" id="c" value="c">
-                            <label for="c">\( f(0) = -1 \); \( f(-1) = 0 \); \( f(1) = 0 \quad \)</label>
-                        </div>
-                        <input type="submit" value="Enviar" class="submit-btn">
-                    </form>
-                </div>
-
+                    <div class="step-options">
+                        <form action="/contenido/{{this.temaId}}/ejercicio/{{ejercicio.id}}/paso/{{paso.id}}/respuesta" method="POST">
+                            <input type="hidden" name="temaId" value="{{temaId}}">
+                            <input type="hidden" name="ejercicioId" value="{{ejercicio.id}}">
+                            <input type="hidden" name="pasoId" value="{{paso.id}}">
+                            <input type="hidden" name="estudianteId" value="{{estudianteId}}">
+                            
+                            {{#each alternativas}}
+                                <div class="option">
+                                    <input type="radio" name="alternativaId" value="{{this.id}}" id="alt-{{this.id}}" />
+                                    <label for="alt-{{this.id}}">{{this.descripcion}}</label>
+                                </div>
+                            {{/each}}
+                                <input type="submit" value="Enviar" class="submit-btn">
+                        </form>
+                    </div>
             </div>
+
+            <!-- Feedback de la respuesta -->
             <div class="feedback">
-                <div class="feedback-statement wrong">
-                    <p>
-                        La respuesta correcta es:
-                    </p>
-                    <p>
-                        \( h(x) = x^3 \), \( g(x) = x^2 - 1 \); \( f(x) = h(g(x)) \)
+                {{#if feedback}}
+                    {{#if feedback.correcto}}
+                        <div class="feedback-statement correct">
+                            <p class="indication">{{feedback.mensaje}}</p>
+                            <p class="correct-answer">{{feedback.alternativaCorrecta}}</p>
 
-\[
-f'(x) = h'(g(x)) \cdot g'(x) = 3 \left( x^2 - 1 \right)^2 \cdot 2x
-\]
-                    </p>
-                    <p>Revisa el siguiente video</p>
-                </div>
-
-                <div class="feedback-statement correct">
-                    <p>
-                        ¡Correcto! La respuesta es
-                    </p>
-                    <p>
-                        \( h(x) = x^3 \), \( g(x) = x^2 - 1 \); \( f(x) = h(g(x)) \)
-
-\[
-f'(x) = h'(g(x)) \cdot g'(x) = 3 \left( x^2 - 1 \right)^2 \cdot 2x
-\]
-                    </p>
-                </div>
-
-                <div class="feedback-video">
-                    <video controls src="videos/pruebavideo.mov"></video>
-                </div>
+                        </div>
+                    {{else}}
+                        <div class="feedback-statement wrong">
+                            <p class="indication">La respuesta correcta es:</p>
+                            <p class="correct-answer">{{feedback.alternativaCorrecta}}</p>
+                            <p class="indication">{{feedback.mensaje}}</p>
+                            {{#if feedback.video}}                                
+                                <video controls autoplay src="/{{feedback.video}}"></video>
+                            {{/if}}
+                            <p class="texto">{{feedback.texto}}</p>
+                        </div>
+                    {{/if}}
+                {{/if}}
             </div>
-            <button class="next-step">Siguiente</button>
+
+           <!-- Botón para pasar al siguiente paso -->
+            {{#if siguientePaso}}
+                <button class="next-step" onclick="location.href='/contenido/{{temaId}}/ejercicio/{{ejercicio.id}}/paso/{{siguientePaso.id}}'">Siguiente</button>
+            {{else}}
+                <!-- Si no hay siguiente paso, se puede mostrar algún mensaje o acción alternativa -->
+                <button class="next-step" onclick="location.href='/contenido'">¡Ejercicio completado!</button>
+            {{/if}}
+
         </div>
-        {{>nav-rs}}
+        <div>
+            
+        </div>
+        <!-- 
+        {{> nav-rs}} Barra de navegación -->
     </div>
-</main>      
+</main>

@@ -3,54 +3,55 @@
     <div class="content-resource">
         <div class="rs-container">    
             <div class="statement">
-                <p>
-                    Encuentre dónde \( f \) tiene máximo y mínimo absolutos. Halle los valores máximo y mínimo absolutos de \( f \).\[
-        f(x) = \left( x^2 - 1 \right)^3, \quad x \in [-1, 2].
-        \]
-                </p>
+                <p>{{descripcion}}</p>
             </div>
 
-            <div class="challenge-answer">
-                <form action="">
-                    <input type="text" name="answer" id="" placeholder="Ingresa tu respuesta" class="answer-inp">
+            <div class="step">
+                <div class="step-statement">
+                    <p>Marca una respuesta</p>
+                </div>
+                <div class="step-options">
+                    <form action="/contenido/{{this.temaId}}/desafio/{{ejercicio.id}}/respuesta" method="post">
+                    <input type="hidden" name="temaId" value="{{temaId}}">
+                    <input type="hidden" name="desafioId" value="{{ejercicio.id}}">
+                    <input type="hidden" name="estudianteId" value="{{estudianteId}}">
+
+                    {{#each alternativas}}
+                        <div class="option">
+                            <input type="radio" name="alternativaId" value="{{this.id}}" id="alt-{{this.id}}" />
+                            <label for="alt-{{this.id}}">{{this.alternativa}}</label>
+                        </div>
+                    {{/each}}
                     <input type="submit" value="Enviar" class="submit-btn">
                 </form>
+                </div>
             </div>
+
+            <!-- Feedback de la respuesta -->
             <div class="feedback">
-                <div class="feedback-statement wrong">
-                    <p>
-                        La respuesta correcta es:
-                    </p>
-                    <p>
-                        \( h(x) = x^3 \), \( g(x) = x^2 - 1 \); \( f(x) = h(g(x)) \)
-
-\[
-f'(x) = h'(g(x)) \cdot g'(x) = 3 \left( x^2 - 1 \right)^2 \cdot 2x
-\]
-                    </p>
-                    <p>Revisa el siguiente video</p>
-                </div>
-
-                <div class="feedback-statement correct">
-                    <p>
-                        ¡Correcto! La respuesta es
-                    </p>
-                    <p>
-                        \( h(x) = x^3 \), \( g(x) = x^2 - 1 \); \( f(x) = h(g(x)) \)
-
-\[
-f'(x) = h'(g(x)) \cdot g'(x) = 3 \left( x^2 - 1 \right)^2 \cdot 2x
-\]
-                    </p>
-                </div>
-
-                <div class="feedback-video">
-                    <video controls src="videos/pruebavideo.mov"></video>
-                </div>
+                {{#if feedback}}
+                    {{#if feedback.correcto}}
+                        <div class="feedback-statement correct">
+                            <p class="indication">{{feedback.mensaje}}</p>
+                            <p class="indication">La respuesta correcta es:</p>
+                            <p class="correct-answer">{{feedback.alternativaCorrecta}}</p>
+                        </div>
+                    {{else}}
+                        <div class="feedback-statement wrong">
+                            <p class="indication">La respuesta correcta es:</p>
+                            <p class="correct-answer">{{feedback.alternativaCorrecta}}</p>
+                            <p class="indication">{{feedback.mensaje}}</p>
+                            {{#if feedback.video}}                                
+                                <video controls autoplay src="/{{feedback.video}}"></video>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                {{/if}}
             </div>
-            <button class="next-step">Siguiente</button>
-        </div>
 
-        {{>nav-rs}}
+           <button class="next-step" onclick="location.href='/contenido'">¡Ejercicio completado!</button>
+        </div>
+        <!--
+        {{>nav-rs}}-->
     </div>
 </main>      
