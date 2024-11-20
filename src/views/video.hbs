@@ -1,9 +1,13 @@
 <main class="content">
-    <h1>Video 01: Valores Máximos y Mínimos</h1>
+    <h1>{{title}}</h1> <!-- Título del video -->
     <div class="content-resource">
         <div class="rs-container">    
-            <video class="video-theme" src="videos/pruebavideo.mov" controls></video>
+            <video controls autoplay class="video-theme" controls>
+                <source src="/{{video.url}}" type="video/mp4">
+                Tu navegador no soporta este formato de video.
+            </video>
         </div>
-        {{>nav-rs}}
+        <!--
+        {{>nav-rs}}-->
     </div>
-</main>      
+</main>
