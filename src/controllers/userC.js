@@ -3,7 +3,7 @@ import pool from '../config/db.js';
 
 export const getUserProfile = async (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/login');
+        return res.redirect('/');
     }
 
     try {
@@ -22,10 +22,10 @@ export const getUserProfile = async (req, res) => {
 
             res.render('profile', { layout, title: 'Mi perfil', userData, iniciales });
         } else {
-            res.redirect('/login');
+            res.redirect('/');
         }
     } catch (error) {
         console.error('Error al obtener datos del usuario:', error);
-        res.redirect('/login');
+        res.redirect('/');
     }
 };

@@ -11,6 +11,9 @@ export const renderChangePassword = (req, res) => {
 export const changePassword = async (req, res) => {
     const { actualPassword, newPassword, confirmPassword } = req.body;
     const userId = req.session.user.id;
+    const userpass = req.session.user.contraseña;
+    console.log('Actual password:', actualPassword);
+    console.log('DB password:', userpass);
 
     if (newPassword !== confirmPassword) {
         return res.render('password', {
