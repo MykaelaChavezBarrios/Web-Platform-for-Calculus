@@ -5,7 +5,7 @@ USE CalcuDB;
 -- Tabla USUARIO (general para todos los usuarios)
 -- Almacena la información básica de los usuarios, ya sean estudiantes o docentes
 CREATE TABLE IF NOT EXISTS USUARIO (
-    id VARCHAR(8) PRIMARY KEY,  -- DNI del usuario
+    id VARCHAR(10) PRIMARY KEY,  -- Cod del usuario
     nombres VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,  -- El correo es único
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS USUARIO (
 -- Tabla ESTUDIANTE
 -- Relacionada con USUARIO, almacena el progreso y la nota total del estudiante
 CREATE TABLE IF NOT EXISTS ESTUDIANTE (
-    id VARCHAR(8) PRIMARY KEY,  -- DNI del estudiante, relación 1:1 con USUARIO
+    id VARCHAR(10) PRIMARY KEY,  -- Cod del estudiante, relación 1:1 con USUARIO
     progreso_total DECIMAL(5,2) DEFAULT 0,  -- Progreso total del estudiante en todo el curso
     nota_total DECIMAL(5,2) DEFAULT 0,  -- Nota total acumulada en todo el curso
     FOREIGN KEY (id) REFERENCES USUARIO(id)
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS ESTUDIANTE (
 -- Tabla DOCENTE
 -- Relacionada con USUARIO, identifica a los docentes
 CREATE TABLE IF NOT EXISTS DOCENTE (
-    id VARCHAR(8) PRIMARY KEY,  -- DNI del docente, relación 1:1 con USUARIO
+    id VARCHAR(10) PRIMARY KEY,  -- DNI del docente, relación 1:1 con USUARIO
     FOREIGN KEY (id) REFERENCES USUARIO(id)
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS TEMA (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,  -- Título del tema
     descripcion TEXT NOT NULL,  -- Descripción del tema
-    id_docente VARCHAR(8),  -- El docente responsable del tema
+    id_docente VARCHAR(10),  -- El docente responsable del tema
     habilitado BOOLEAN DEFAULT TRUE,  -- Define si el tema está habilitado o no
     FOREIGN KEY (id_docente) REFERENCES DOCENTE(id)
 );
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS ALTERNATIVA (
 -- Tabla PROGRESO_ESTUDIANTE
 -- Almacena el progreso de cada estudiante en cada tema específico
 CREATE TABLE IF NOT EXISTS PROGRESO_ESTUDIANTE (
-    id_estudiante VARCHAR(8),  -- Relación con ESTUDIANTE
+    id_estudiante VARCHAR(10),  -- Relación con ESTUDIANTE
     id_tema INT,  -- Relación con TEMA
     progreso DECIMAL(5,2) DEFAULT 0,  -- Progreso del estudiante en este tema específico
     nota_total DECIMAL(5,2) DEFAULT 0,  -- Nota total del estudiante en este tema específico
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS PROGRESO_ESTUDIANTE (
 -- Nota: Solo se permite un intento para los desafíos (enforce unique constraint)
 CREATE TABLE IF NOT EXISTS INTENTO_EJERCICIO (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_estudiante VARCHAR(8),  -- Relación con ESTUDIANTE
+    id_estudiante VARCHAR(10),  -- Relación con ESTUDIANTE
     id_ejercicio INT,  -- Relación con EJERCICIO
     fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha y hora del intento
     nota DECIMAL(5,2) NOT NULL,  -- Nota obtenida en este intento
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS INTENTO_EJERCICIO (
 -- Almacena la nota más alta obtenida en cada ejercicio (solo para los ejercicios paso a paso)
 -- Nota: Para los desafíos, la nota se almacena directamente en INTENTO_EJERCICIO
 CREATE TABLE IF NOT EXISTS NOTA_EJERCICIO (
-    id_estudiante VARCHAR(8),  -- Relación con ESTUDIANTE
+    id_estudiante VARCHAR(10),  -- Relación con ESTUDIANTE
     id_ejercicio INT,  -- Relación con EJERCICIO
     nota DECIMAL(5,2) NOT NULL,  -- Nota más alta obtenida en el ejercicio
     PRIMARY KEY (id_estudiante, id_ejercicio),

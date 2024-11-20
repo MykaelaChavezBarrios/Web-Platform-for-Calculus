@@ -16,7 +16,12 @@ const config = (app) => {
         defaultLayout: 'main-E',
         layoutsDir: join(app.get('views'), 'layouts'),
         partialsDir: join(app.get('views'), 'partials'),
-        extname: '.hbs'
+        extname: '.hbs',
+        helpers: {
+            eq: function (a, b) {
+                return a === b;
+            }
+        }
     }));
 
     // Establecer el motor de plantillas a Handlebars

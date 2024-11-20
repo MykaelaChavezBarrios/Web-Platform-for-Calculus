@@ -44,4 +44,25 @@
 });
 </script>
 
+<script>
+    window.onload = function() {
+    const currentURL = window.location.href;
+    const submitButton = document.querySelector('.submit-btn');
+    const nextButton = document.querySelector('.next-step');
+
+    // Si la URL contiene '/respuesta', deshabilitar el botón
+    if (currentURL.includes('/respuesta')) {
+        if (submitButton) {
+            submitButton.style.display = 'none'; // O deshabilitarlo, como prefieras
+        }
+    }
+    else {
+            if (nextButton) {
+                nextButton.style.display = 'none'; // Oculta el botón
+            }
+        }
+};
+
+</script>
+
 </html>

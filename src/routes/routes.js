@@ -3,6 +3,11 @@ import { loginAuth } from '../controllers/authC.js';
 import { logout } from '../controllers/authC.js';
 import { getUserProfile } from '../controllers/userC.js';
 import { renderChangePassword, changePassword } from '../controllers/changePassword.js';
+import { getContenido } from '../controllers/contentC.js';
+import { getVideo } from '../controllers/videoC.js';
+import { getEjercicio, submitRespuesta } from '../controllers/excerciseC.js';
+import { getDesafio, submitRespuestaD } from '../controllers/challengeC.js';
+
 const router = Router();
 
 // Ruta para mostrar el formulario de inicio de sesión
@@ -46,27 +51,33 @@ router.get('/mi-perfil', getUserProfile);
 router.get('/mi-perfil/cambiar-contrasena', renderChangePassword);
 router.post('/mi-perfil/cambiar-contrasena', changePassword);
 
-
-/*router.get('/mi-perfil/cambiar-contrasena', (req, res) => {
-    // Verifica si el usuario tiene una sesión activa
-    if (!req.session.user) {
-        return res.redirect('/login');
-    }
-
-    // Redirige al usuario según su rol
-    if (req.session.user.rol === 'estudiante') {
-        res.render('password', { layout: 'main-E', title: 'Cambiar Contraseña' });
-    } else if (req.session.user.rol === 'docente') {
-        res.render('password', { layout: 'main-P', title: 'Cambiar Contraseña' });
-    }
-});
-*/
-
-
 // Ruta de contenido
 
-router.get('/contenido', (req, res) => {
-    res.render('video', { layout: 'main-E', title: 'Contenido' });
-});
+router.get('/contenido', getContenido);
+
+// Ruta video
+
+router.get('/contenido/:temaId//:videoId', getVideo);
+
+// Mostrar el ejercicio
+router.get('/contenido/:temaId/ejercicio/:ejercicioId', getEjercicio);
+
+// Mostrar pasos
+
+router.get('/contenido/:temaId/ejercicio/:ejercicioId/paso/:pasoId', getEjercicio);
+
+// Enviar respuesta del ejercicio
+router.post('/contenido/:temaId/ejercicio/:ejercicioId/paso/:pasoId/respuesta',
+    submitRespuesta
+);
+
+// Mostrar el desafio
+router.get('/contenido/:temaId/desafio/:desafioId', getDesafio);
+
+// Enviar respuesta del desafio
+router.post('/contenido/:temaId/desafio/:desafioId/respuesta',
+    submitRespuestaD
+);
+
 
 export default router;

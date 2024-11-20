@@ -200,3 +200,39 @@
     padding: 20px 24px;
     margin-bottom: 32px;
 }
+.feedback-statement.wrong video {
+    margin-top: 20px;
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    object-fit: cover;
+    border-radius: 8px;
+}  
+
+.feedback-statement.wrong .indication {
+    font-weight: 600;
+    color: #973C3C;
+}
+
+.feedback-statement.correct .indication {
+    font-weight: 600;
+    color: #25824A;
+    margin-bottom: 8px;
+}
+
+.feedback-statement.wrong .correct-answer {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.feedback-statement.wrong  .texto {
+    margin-top: 8px;
+    text-align: left !important;
+}
+
+mjx-mtd {
+    text-align: left !important;
+}
+
+mjx-dtable > * {
+    font-size:14px !important;
+}

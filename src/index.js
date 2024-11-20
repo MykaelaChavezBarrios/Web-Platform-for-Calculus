@@ -32,3 +32,11 @@ app.use(express.static(join(__dirname, 'public')));
 
 app.listen(app.get('port'), () =>
     console.log('Server listening on port', app.get('port'), '\nhttp://localhost:4000/'));
+
+// DEPURACION ROUTES
+
+app._router.stack.forEach((r) => {
+    if (r.route && r.route.path) {
+        console.log(r.route.path);
+    }
+});
