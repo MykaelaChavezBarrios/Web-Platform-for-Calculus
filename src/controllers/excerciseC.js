@@ -116,6 +116,16 @@ export const submitRespuesta = async (req, res) => {
 
         const ejercicioDescripcion = ejercicioRows.length > 0 ? ejercicioRows[0].descripcion : 'Descripción no disponible';
 
+
+        // Obtener los titulos del ejercicio y del paso
+        const [titleRows] = await pool.query(
+            'SELECT titulo FROM EJERCICIO WHERE id = ?',
+            [ejercicioId]
+        );
+
+        const tituloEjercicio = titleRows.length > 0 ? titleRows[0].titulo : 'Titulo no disponible';
+
+
         const [pasoRows] = await pool.query(
             'SELECT descripcion FROM PASO WHERE id = ?',
             [pasoId]
@@ -207,7 +217,7 @@ export const submitRespuesta = async (req, res) => {
         if (siguientePaso) {
             // Si hay siguiente paso, redirigir al siguiente paso
             return res.render('excercise', {
-                title: 'Ejercicio ' + ejercicioId,
+                title: tituloEjercicio,
                 temaId,
                 feedback: {
                     correcto: esCorrecta,
